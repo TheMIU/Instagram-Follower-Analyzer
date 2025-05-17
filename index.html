@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Instagram Follower Analyzer</title>
+    <link rel="stylesheet" href="css/styles.css" />
+</head>
+
+<body>
+    <div class="container">
+        <h1>Instagram Follower Analyzer</h1>
+
+        <div class="instructions">
+            <h2>How to use:</h2>
+            <ol>
+                <li>Go to your Instagram profile on a browser.</li>
+                <li>Open the <strong>Followers</strong> or <strong>Following</strong> popup window.</li>
+                <li>Scroll all the way down to load all users.</li>
+                <li>Open browser dev tools (Right click → Inspect → Console tab).</li>
+                <li>Paste the following code into the console and press Enter.</li>
+                <li>Click "OK" when asked to copy the array of usernames.</li>
+                <li>Paste that list into the appropriate box below.</li>
+            </ol>
+
+            <div class="code-section">
+                <pre id="code-block">
+const usernames = Array.from(document.querySelectorAll('span._ap3a._aaco._aacw._aacx._aad7._aade'))
+  .map(span => span.innerText.trim())
+  .filter(name => name);
+
+console.log("Usernames:", usernames);
+
+if (confirm("Copy usernames array to clipboard?")) {
+  const textarea = document.createElement('textarea');
+  textarea.value = usernames;
+  document.body.appendChild(textarea);
+  textarea.select();
+  try {
+    document.execCommand('copy');
+    alert("Copied to clipboard as array!");
+  } catch (err) {
+    alert("Failed to copy.");
+  }
+  document.body.removeChild(textarea);
+}
+        </pre>
+                <button onclick="copyCode()">Copy Code</button>
+            </div>
+        </div>
+
+        <div class="box">
+            <label for="followers">Followers (comma-separated):</label>
+            <textarea id="followers" placeholder="Paste your followers here..."></textarea>
+            <p>Total Followers: <span id="followersCount">0</span></p>
+        </div>
+
+        <div class="box">
+            <label for="following">Following (comma-separated):</label>
+            <textarea id="following" placeholder="Paste who you follow here..."></textarea>
+            <p>Total Following: <span id="followingCount">0</span></p>
+        </div>
+
+        <button onclick="analyze()">Analyze</button>
+
+        <div class="results" id="results"></div>
+    </div>
+
+    <script src="js/script.js"></script>
+    <script>
+        function copyCode() {
+            const code = document.getElementById('code-block').innerText;
+            const textarea = document.createElement('textarea');
+            textarea.value = code;
+            document.body.appendChild(textarea);
+            textarea.select();
+            try {
+                document.execCommand('copy');
+                alert("Code copied to clipboard!");
+            } catch (err) {
+                alert("Failed to copy code.");
+            }
+            document.body.removeChild(textarea);
+        }
+    </script>
+</body>
+
+</html>

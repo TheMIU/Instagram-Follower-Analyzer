@@ -1,3 +1,18 @@
+function copyCode() {
+            const code = document.getElementById('code-block').innerText;
+            const textarea = document.createElement('textarea');
+            textarea.value = code;
+            document.body.appendChild(textarea);
+            textarea.select();
+            try {
+                document.execCommand('copy');
+                alert("Code copied to clipboard!");
+            } catch (err) {
+                alert("Failed to copy code.");
+            }
+            document.body.removeChild(textarea);
+}
+
 function updateCount(inputId, countId) {
     const input = document.getElementById(inputId).value;
     const count = input
@@ -16,6 +31,8 @@ document.getElementById('following').addEventListener('input', () => {
     updateCount('following', 'followingCount');
 });
 
+
+/* ///////////////////// analyze ///////////////////// */
 function analyze() {
     const followersInput = document.getElementById('followers').value;
     const followingInput = document.getElementById('following').value;

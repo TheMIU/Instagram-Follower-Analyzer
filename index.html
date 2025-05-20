@@ -10,18 +10,19 @@
 
 <body>
   <div class="container">
-    <h1>Instagram Follower Analyzer</h1>
+    <div class="container">
+      <h1>Instagram Follower Analyzer</h1>
 
-    <div class="instructions">
-      <h2>How to use:</h2>
-      <ol>
-        <li>Go to your Instagram profile on a browser.</li>
-        <li>Open the <strong>Followers</strong> or <strong>Following</strong> popup window.</li>
-        <li>Scroll all the way down to load all users.</li>
-        <li>Open browser dev tools (Right click → Inspect → Console tab).</li>
-        <li>Paste the following code into the console and press Enter.</li>
-        <div class="code-section">
-          <pre id="code-block">
+      <div class="instructions">
+        <h2>How to use:</h2>
+        <ol>
+          <li>Go to your Instagram profile on a browser.</li>
+          <li>Open browser dev tools (Right click → Inspect → Console tab).</li>
+          <li>Open the <strong>Followers</strong> or <strong>Following</strong> popup window.</li>
+          <li>Scroll all the way down to load all users.</li>
+          <li>Paste the following code into the console and press Enter.</li>
+          <div class="code-section">
+            <pre id="code-block">
 const usernames = Array.from(document.querySelectorAll('span._ap3a._aaco._aacw._aacx._aad7._aade'))
   .map(span => span.innerText.trim())
   .filter(name => name);
@@ -42,42 +43,46 @@ if (confirm("Copy usernames array to clipboard?")) {
   document.body.removeChild(textarea);
 }
         </pre>
-          <button onclick="copyCode()">Copy Code</button>
+            <button onclick="copyCode()">Copy Code</button>
+          </div>
+          <li>Click "OK" when asked to copy the array of usernames.</li>
+          <li>Paste that list into the appropriate box below.</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="container" style="display: flex; justify-content: space-around;">
+      <div class="box">
+        <div>
+          <label for="followers">Followers:</label>
+          <div>
+            <label for="importFollowers">Import Followers (.txt)</label>
+            <input type="file" id="importFollowers" accept=".txt" onchange="importText(this, 'followers')">
+          </div>
         </div>
-        <li>Click "OK" when asked to copy the array of usernames.</li>
-        <li>Paste that list into the appropriate box below.</li>
-      </ol>
+        <textarea id="followers" placeholder="Or paste your followers here..."></textarea>
+        <div style="display:flex; justify-content: space-between;">
+          <p>Total Followers: <span id="followersCount">0</span></p>
+          <button onclick="exportText('followers')">Export Followers</button>
+        </div>
+      </div>
 
-
+      <div class="box">
+        <div>
+          <label for="following">Following:</label>
+          <div>
+            <label for="importFollowing">Import Following (.txt)</label>
+            <input type="file" id="importFollowing" accept=".txt" onchange="importText(this, 'following')">
+          </div>
+        </div>
+        <textarea id="following" placeholder="Or paste who you follow here..."></textarea>
+        <div style="display:flex; justify-content: space-between;">
+          <p>Total Following: <span id="followingCount">0</span></p>
+          <button onclick="exportText('following')">Export Following</button>
+        </div>
+      </div>
     </div>
 
-    <!-- Export Buttons -->
-    <div class="box">
-      <button onclick="exportText('followers')">Export Followers</button>
-      <button onclick="exportText('following')">Export Following</button>
-    </div>
-
-    <!-- Import Buttons -->
-    <div class="box">
-      <label for="importFollowers">Import Followers:</label>
-      <input type="file" id="importFollowers" accept=".txt" onchange="importText(this, 'followers')">
-
-      <label for="importFollowing">Import Following:</label>
-      <input type="file" id="importFollowing" accept=".txt" onchange="importText(this, 'following')">
-    </div>
-
-
-    <div class="box">
-      <label for="followers">Followers (comma-separated):</label>
-      <textarea id="followers" placeholder="Paste your followers here..."></textarea>
-      <p>Total Followers: <span id="followersCount">0</span></p>
-    </div>
-
-    <div class="box">
-      <label for="following">Following (comma-separated):</label>
-      <textarea id="following" placeholder="Paste who you follow here..."></textarea>
-      <p>Total Following: <span id="followingCount">0</span></p>
-    </div>
 
     <button onclick="analyze()">Analyze</button>
 

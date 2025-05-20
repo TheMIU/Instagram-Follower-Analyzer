@@ -49,7 +49,7 @@ function importText(input, type) {
     if (!file) return;
 
     const reader = new FileReader();
-    reader.onload = function(e) {
+    reader.onload = function (e) {
         document.getElementById(type).value = e.target.result;
         // Trigger count update using the correct IDs
         updateCount(type, type + 'Count');
@@ -115,3 +115,5 @@ function analyze() {
     ${createLinkList(notFollowedBack)}
   `;
 }
+
+

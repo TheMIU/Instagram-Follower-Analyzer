@@ -10,12 +10,12 @@
 
 <body>
   <nav class="navbar">Instagram Follower Analyzer
-    <button id="theme-toggle" class="file-btn" style="position: absolute; right: 20px; top: 12px; z-index: 1000;">
-      Toggle Theme
+    <button id="theme-toggle">
+      ◐
     </button>
   </nav>
 
-  <div class="container">
+  <div class="container" style="margin-top: 80px;">
     <div class="instructions">
       <h3>How to use:</h3>
       <ol>
@@ -46,7 +46,7 @@ if (confirm("Copy usernames array to clipboard?")) {
   document.body.removeChild(textarea);
 }
         </pre>
-          <button onclick="copyCode()">Copy Code</button>
+          <button class="file-btn" onclick="copyCode()">Copy Code</button>
         </div>
         <li>Click "OK" when asked to copy the array of usernames.</li>
         <li>Paste that list into the appropriate box below.</li>
@@ -54,7 +54,35 @@ if (confirm("Copy usernames array to clipboard?")) {
     </div>
   </div>
 
-  <div class="container" style="display: flex; justify-content: space-around;">
+  <div class="container">
+    <div class="warning">
+      <h3>⚠️ Important Warning</h3>
+      <p>
+        Do not bulk follow or unfollow users on Instagram. Doing so can trigger Instagram's spam detection and may lead
+        to account restrictions.
+      </p>
+      <ul>
+        <li><strong>Safe daily limit:</strong> 150 to 200 follow/unfollow actions per day</li>
+        <li><strong>For new accounts:</strong> Stay under 100 actions per day for the first few weeks</li>
+        <li>Spread your actions gradually throughout the day to avoid detection</li>
+        <li><strong>If you exceed the limit, Instagram may:</strong>
+          <ul>
+            <li>Temporarily block your actions (for hours or days)</li>
+            <li>Limit your reach (shadowban)</li>
+            <li>Disable your account permanently if abuse continues</li>
+          </ul>
+        </li>
+      </ul>
+      <p>
+        This limit is not officially confirmed by Instagram - it’s based on extensive community testing and experience
+        with Instagram automation tools.
+      </p>
+    </div>
+
+  </div>
+
+
+  <div class="container box-container">
     <div class="box">
       <h3>Followers</h3>
       <div>
@@ -64,9 +92,9 @@ if (confirm("Copy usernames array to clipboard?")) {
         </label>
       </div>
       <textarea id="followers" placeholder="Or paste your followers here..."></textarea>
-      <div style="display:flex; justify-content: space-between;">
+      <div style="display:flex; justify-content: space-between; align-items: center;">
         <p>Total Followers: <span id="followersCount">0</span></p>
-        <button onclick="exportText('followers')">Export Followers</button>
+        <button class="file-btn" onclick="exportText('followers')">Export Followers.txt</button>
       </div>
     </div>
 
@@ -79,16 +107,16 @@ if (confirm("Copy usernames array to clipboard?")) {
         </label>
       </div>
       <textarea id="following" placeholder="Or paste who you follow here..."></textarea>
-      <div style="display:flex; justify-content: space-between;">
+      <div style="display:flex; justify-content: space-between; align-items: center;">
         <p>Total Following: <span id="followingCount">0</span></p>
-        <button onclick="exportText('following')">Export Following</button>
+        <button class="file-btn" onclick="exportText('following')">Export Following.txt</button>
       </div>
     </div>
   </div>
 
 
   <div class="container">
-    <button onclick="analyze()" style="width: 100%;">Analyze</button>
+    <button class="insta-style-btn" onclick="analyze()" style="width: 100%;">Analyze</button>
   </div>
 
   <div class="container resultsContainer">
@@ -96,9 +124,18 @@ if (confirm("Copy usernames array to clipboard?")) {
   </div>
 
 
+  <footer class="site-footer">
+    <p>
+      Made with ❤️ by <a href="https://github.com/TheMIU" target="_blank" rel="noopener">Kasun Miu</a> &copy; <span
+        id="currentYear"></span>
+  
+      | <a href="privacy-policy.html" target="_blank">Privacy Policy</a>
+    </p>
+  </footer>
 
   <script src="js/script.js"></script>
-  <script>
+  <script>    document.getElementById('currentYear').textContent = new Date().getFullYear();
+
     const toggleBtn = document.getElementById('theme-toggle');
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
     const savedTheme = localStorage.getItem('theme');
@@ -121,7 +158,10 @@ if (confirm("Copy usernames array to clipboard?")) {
         localStorage.setItem('theme', 'dark');
       }
     });
+
   </script>
+
+
 
 </body>
 

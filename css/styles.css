@@ -1,9 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+
 * {
     box-sizing: border-box;
 }
 
 body {
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-family: "Rubik", sans-serif;
     margin: 0;
     padding: 0;
 }
@@ -57,9 +59,13 @@ body.dark-theme .container {
 
 .container {
     max-width: 1200px;
-    margin: 80px auto 40px;
+    margin: 20px auto 20px;
     padding: 20px;
     border-radius: 12px;
+}
+
+.resultsContainer {
+    display: none;
 }
 
 /* -----------------------------
@@ -71,13 +77,46 @@ h3 {
     color: inherit;
 }
 
+h3 {
+    color: #0095f6;
+}
+
 .instructions {
+    padding: 20px 25px;
+    border-left: 5px solid #0095f6;
+    border-radius: 12px;
     margin-bottom: 30px;
+    transition: background 0.3s ease;
+}
+
+.dark-theme .instructions {
+    background: #1f1f1f;
+    border-left-color: #f58529;
+}
+
+.instructions h3 {
+    margin-top: 0;
+    font-size: 20px;
+    color: #0095f6;
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+.dark-theme .instructions h3 {
+    color: #f58529;
 }
 
 .instructions ol {
     padding-left: 20px;
+    margin: 0;
 }
+
+.instructions ol li {
+    margin-bottom: 10px;
+    font-size: 15px;
+    line-height: 1.6;
+}
+
 
 /* -----------------------------
    Code Section
@@ -95,7 +134,7 @@ body.dark-theme .code-section {
 .code-section {
     border-radius: 8px;
     padding: 15px;
-    margin-top: 15px;
+    margin: 15px 0;
     position: relative;
 }
 
@@ -104,8 +143,7 @@ body.dark-theme .code-section {
     overflow-x: auto;
     white-space: pre-wrap;
     word-break: break-word;
-    font-family: Consolas, monospace;
-    font-size: 14px;
+    font-size: 10px;
     background: transparent;
     padding: 10px;
     border-radius: 6px;
@@ -114,7 +152,7 @@ body.dark-theme .code-section {
 /* -----------------------------
    Buttons
 ----------------------------- */
-button {
+.insta-style-btn {
     display: block;
     padding: 12px 16px;
     font-size: 16px;
@@ -128,7 +166,7 @@ button {
     background: linear-gradient(90deg, #f58529, #dd2a7b, #8134af, #515bd4);
 }
 
-button:hover {
+.insta-style-btn:hover {
     opacity: 0.9;
 }
 
@@ -150,6 +188,7 @@ button:hover {
     background-color: #0095f6;
     color: white;
     border-radius: 6px;
+    border: none;
     cursor: pointer;
     font-size: 14px;
     font-weight: 500;
@@ -159,6 +198,39 @@ button:hover {
 .file-btn:hover {
     background-color: #0077c2;
 }
+
+#theme-toggle {
+    position: absolute;
+    right: 20px;
+    z-index: 1100;
+    font-size: 20px;
+    font-weight: 600;
+    border: none;
+    border-radius: 100%;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    height: 30px;
+    width: 30px;
+    line-height: 0;
+    color: black;
+}
+
+body.light-theme #theme-toggle {
+    background-color: white;
+    color: black;
+}
+
+body.dark-theme #theme-toggle {
+    background-color: #121212;
+    color: white;
+}
+
+#theme-toggle:hover {
+    transform: scale(1.05);
+}
+
+
 
 /* -----------------------------
    Inputs and Textareas
@@ -193,10 +265,22 @@ label {
 /* -----------------------------
    Box
 ----------------------------- */
+.box-container {
+    display: flex;
+    justify-content: space-around;
+}
+
 .box {
     margin-bottom: 20px;
     width: 100%;
     padding: 20px;
+}
+
+@media (max-width: 900px) {
+    .box-container {
+        flex-direction: column;
+        align-items: center;
+    }
 }
 
 /* -----------------------------
@@ -227,7 +311,7 @@ body.dark-theme .results pre {
 /* -----------------------------
    List Items
 ----------------------------- */
-ul {
+.results ul {
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
@@ -248,7 +332,7 @@ body.light-theme .results li {
 }
 
 body.dark-theme .results li {
-    background: #2c2c2c;
+    background: #00000057;
 }
 
 .results li:hover {
@@ -274,4 +358,69 @@ textarea,
 .results pre,
 .results li {
     transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+/* -----------------------------
+   warning
+----------------------------- */
+.warning {
+    background-color: #fff4e5;
+    border-left: 5px solid #f44336;
+    padding: 20px 25px;
+    border-radius: 12px;
+    margin-bottom: 30px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    transition: background 0.3s ease;
+}
+
+.dark-theme .warning {
+    background-color: #2a1f1f;
+    color: #ffcccc;
+    border-left-color: #ff6b6b;
+}
+
+.warning h3 {
+    margin-top: 0;
+    color: #c62828;
+    font-size: 18px;
+}
+
+.dark-theme .warning h3 {
+    color: #ff5252;
+}
+
+.warning p {
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+.warning ul {
+    padding-left: 20px;
+    margin-top: 10px;
+}
+
+.warning ul li {
+    margin-bottom: 8px;
+    font-size: 15px;
+    line-height: 1.5;
+}
+
+/* -----------------------------
+   footer
+----------------------------- */
+.site-footer {
+  text-align: center;
+  font-size: 14px;
+  padding: 10px;
+  margin-top: 40px;
+  background-color: #515cd40f;
+}
+
+.site-footer a {
+  color: var(--accent-color, #0077cc);
+  text-decoration: none;
+}
+
+.site-footer a:hover {
+  text-decoration: underline;
 }

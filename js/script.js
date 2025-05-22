@@ -4,14 +4,29 @@ function copyCode() {
     textarea.value = code;
     document.body.appendChild(textarea);
     textarea.select();
+
+    const button = document.querySelector('.file-btn');
+    const originalText = button.textContent;
+
     try {
         document.execCommand('copy');
-        alert("Code copied to clipboard!");
+        button.textContent = 'Copied ✔';
+        button.disabled = true;
+
+        setTimeout(() => {
+            button.textContent = originalText;
+            button.disabled = false;
+        }, 5000);
     } catch (err) {
-        alert("Failed to copy code.");
+        button.textContent = 'Failed ❌';
+        setTimeout(() => {
+            button.textContent = originalText;
+        }, 3000);
     }
+
     document.body.removeChild(textarea);
 }
+
 
 /* ///////////////////// export import ///////////////////// */
 function exportText(type) {
@@ -114,6 +129,12 @@ function analyze() {
     <p><strong>People who follow you but you don't follow back:</strong> (${notFollowedBack.length})</p>
     ${createLinkList(notFollowedBack)}
   `;
+
+    // Show the results container and scroll to it
+    const resultsContainer = document.querySelector('.resultsContainer');
+    resultsContainer.style.display = 'block';
+    resultsContainer.scrollIntoView({ behavior: 'smooth' });
+
 }
 
 

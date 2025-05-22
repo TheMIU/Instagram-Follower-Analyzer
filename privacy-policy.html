@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Privacy Policy</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        h1,
+        h2 {
+            color: #111;
+        }
+
+        a {
+            color: #0077cc;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        ul {
+            padding-left: 18px;
+        }
+
+        footer {
+            margin-top: 40px;
+            font-size: 14px;
+            text-align: center;
+            color: #666;
+        }
+
+        .note {
+            background: #f9f9f9;
+            border-left: 4px solid #ccc;
+            padding: 15px;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Privacy Policy</h1>
+    <p>Effective Date: <strong><span id="currentDate"></span></strong></p>
+
+    <p>This tool is a simple browser-based utility designed to help users compare their Instagram followers and
+        following lists. It does <strong>not</strong> violate Instagram's terms of service and is <strong>not
+            illegal</strong> in any way. No unauthorized access or automation is performed.</p>
+
+    <div class="note">
+        ⚠️ <strong>Note:</strong> This tool does not connect to Instagram or make any automated requests. All data is
+        manually input by the user and processed only in the browser.
+    </div>
+
+    <h2>What We Don’t Do</h2>
+    <ul>
+        <li>No data is collected, stored, or shared</li>
+        <li>No tracking cookies or analytics are used</li>
+        <li>No user login or account is required</li>
+        <li>No external servers are involved - everything runs locally</li>
+    </ul>
+
+    <h2>Data Handling</h2>
+    <p>All data (text you paste or import) is handled entirely within your browser. It never leaves your device and is
+        deleted when you refresh or close the page.</p>
+
+    <h2>Disclaimer</h2>
+    <p>This tool is not affiliated with or endorsed by Instagram. For information about how Instagram handles your data,
+        please refer to their official privacy policy here:</p>
+    <p><a href="https://privacycenter.instagram.com/policy" target="_blank">Instagram Privacy Policy</a></p>
+
+    <h2>Changes to This Policy</h2>
+    <p>Any updates to this policy will be reflected on this page with a new effective date.</p>
+
+    <h2>Contact</h2>
+    <p>If you have questions or concerns, feel free to reach out at: <a
+            href="mailto:kasunmiu@gmail.com">kasunmiu@gmail.com</a></p>
+
+    <footer>
+        &copy; <span id="year"></span> Kasun Miu. All rights reserved.
+    </footer>
+
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+        document.getElementById('currentDate').textContent = new Date().toLocaleDateString();
+    </script>
+</body>
+
+</html>

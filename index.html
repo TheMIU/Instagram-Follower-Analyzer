@@ -4,9 +4,32 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
   <title>Instagram Follower Analyzer</title>
+  <meta name="description" content="Analyze your Instagram followers and following list. See who doesn't follow you back or who you haven't followed back." />
+  <meta name="keywords" content="Instagram, follower analyzer, follow back, unfollow tool, Instagram followers, social media tool" />
+  <meta name="author" content="Kasun Miuranga" />
+  
+  <!-- Open Graph (Facebook, LinkedIn, etc.) -->
+  <meta property="og:title" content="Instagram Follower Analyzer" />
+  <meta property="og:description" content="Easily analyze your Instagram followers and following list." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://yourdomain.com/" />
+  <meta property="og:image" content="https://yourdomain.com/og-image.jpg" />
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Instagram Follower Analyzer" />
+  <meta name="twitter:description" content="Find out who doesn't follow you back and more." />
+  <meta name="twitter:image" content="https://yourdomain.com/og-image.jpg" />
+
+  <!-- Favicon -->
+  <link rel="icon" href="favicon.png" type="image/png" />
+
+  <!-- Styles -->
   <link rel="stylesheet" href="css/styles.css" />
 </head>
+
 
 <body>
   <nav class="navbar">Instagram Follower Analyzer
@@ -32,14 +55,14 @@ const usernames = Array.from(document.querySelectorAll('span._ap3a._aaco._aacw._
 
 console.log("Usernames:", usernames);
 
-if (confirm("Copy usernames array to clipboard?")) {
+if (confirm("Copy usernames to clipboard?")) {
   const textarea = document.createElement('textarea');
   textarea.value = usernames;
   document.body.appendChild(textarea);
   textarea.select();
   try {
     document.execCommand('copy');
-    alert("Copied to clipboard as array!");
+    alert("Copied!");
   } catch (err) {
     alert("Failed to copy.");
   }
